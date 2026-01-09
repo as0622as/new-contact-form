@@ -34,7 +34,9 @@
         <button type="submit">検索</button>
         <a href="{{ route('admin.contacts.index') }}" class="btn-reset">リセット</a>
     </form>
-
+    <a href="{{ route('admin.contacts.export') }}" class="btn-export">
+        エクスポート
+    </a>
     {{-- ページネーション --}}
     @php
         $total = $contacts->lastPage();
@@ -62,7 +64,7 @@
         <a class="page-item" href="{{ $contacts->url($current + 1) }}">＞</a>
     @endif
     </div>
-    
+
     {{-- お問い合わせ一覧 --}}
     <table border="1" cellpadding="8">
         <thead>
@@ -84,87 +86,76 @@
                     <td>{{ $contact->email }}</td>
                     <td>{{ $contact->category->content ?? '' }}</td>
                     <td>
-                        <button type="button" @click="openDetail = true;
-                                    contact = {
-                                        id: {{ $contact->id }},
-                                        name: @js($contact->last_name . ' ' . $contact->first_name),
-                                        gender: @js($contact->gender === 1 ? '男性' : ($contact->gender === 2 ? '女性' : 'その他')),
-                                        email: @js($contact->email),
-                                        tel: @js($contact->tel),
-                                        address: @js($contact->address),
-                                        building: @js($contact->building),
-                                        category: @js($contact->category->content ?? ''),
-                                        detail: @js($contact->detail),
-                                        };
-                                            ">詳細</button>
-
-                        <button type="button" @click="openDelete = true;
-                                    contact = {
-                                    id: {{ $contact->id }},
-                                    name: @js($contact->last_name . ' ' . $contact->first_name),
-                                    gender: @js($contact->gender === 1 ? '男性' : ($contact->gender === 2 ? '女性' : 'その他')),
-                                    email: @js($contact->email),
-                                    tel: @js($contact->tel),
-                                    address: @js($contact->address),
-                                    building: @js($contact->building),
-                                    category: @js($contact->category->content ?? ''),
-                                    detail: @js($contact->detail),
-                                    deleteUrl: @js(route('admin.contacts.destroy', $contact)),
-                                        };
-                                            ">削除</button>
+                        <a href="#detail-{{ $contact->id }}" class="btn btn-primary">詳細</a>
                     </td>
                 </tr>
+
+                {{-- ▼ 詳細モーダル ▼ --}}
+                <div id="detail-{{ $contact->id }}" class="modal">
+                    <div class="modal-box">
+                        <a href="#" class="modal-close">×</a>
+
+                        <h2>お問い合わせ詳細</h2>
+
+                        <p><strong>ID:</strong> {{ $contact->id }}</p>
+                        <p><strong>名前:</strong> {{ $contact->last_name }} {{ $contact->first_name }}</p>
+                        <p><strong>性別:</strong>
+                            {{ $contact->gender === 1 ? '男性' : ($contact->gender === 2 ? '女性' : 'その他') }}
+                        </p>
+                        <p><strong>メール:</strong> {{ $contact->email }}</p>
+                        <p><strong>電話番号:</strong> {{ $contact->tel }}</p>
+                        <p><strong>住所:</strong> {{ $contact->address }}</p>
+                        <p><strong>建物名:</strong> {{ $contact->building }}</p>
+                        <p><strong>種類:</strong> {{ $contact->category->content ?? '' }}</p>
+
+                        <p><strong>内容:</strong></p>
+                        <div>{{ $contact->detail }}</div>
+
+                        {{-- 削除ボタン --}}
+                        <div style="modal-delete-btn">
+                             <a href="#delete-{{ $contact->id }}" class="btn btn-delete">
+                                    削除
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {{-- ▲ 詳細モーダル ▲ --}}
+
+                {{-- ▼ 削除モーダル ▼ --}}
+                <div id="delete-{{ $contact->id }}" class="modal">
+                    <div class="modal-box">
+                        <a href="#" class="modal-close">×</a>
+
+                        <h2>削除確認</h2>
+                        <p>以下のお問い合わせを削除します。よろしいですか？</p>
+
+                        <p><strong>ID:</strong> {{ $contact->id }}</p>
+                        <p><strong>名前:</strong> {{ $contact->last_name }} {{ $contact->first_name }}</p>
+                        <p><strong>性別:</strong>
+                            {{ $contact->gender === 1 ? '男性' : ($contact->gender === 2 ? '女性' : 'その他') }}
+                        </p>
+                        <p><strong>メール:</strong> {{ $contact->email }}</p>
+                        <p><strong>電話番号:</strong> {{ $contact->tel }}</p>
+                        <p><strong>住所:</strong> {{ $contact->address }}</p>
+                        <p><strong>建物名:</strong> {{ $contact->building }}</p>
+                        <p><strong>種類:</strong> {{ $contact->category->content ?? '' }}</p>
+
+                        <p><strong>内容:</strong></p>
+                        <div>{{ $contact->detail }}</div>
+
+                        <form action="{{ route('admin.contacts.destroy', $contact) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn-delete">削除する</button>
+                            <a href="#" class="btn-cancel">キャンセル</a>
+                        </form>
+                    </div>
+                </div>
+                {{-- ▲ 削除モーダル ▲ --}}
             @endforeach
         </tbody>
     </table>
 
-    {{-- 削除モーダル --}}
-    <div x-show="openDelete" @click.self="open=false" class="modal-overlay">
-        <div class="modal-box">
-            <h2 class="modal-title">削除確認</h2>
-            <p>以下のお問い合わせを削除します。よろしいですか？</p>
-            <div class="modal-info">
-                <p><strong>ID:</strong> <span x-text="contact.id"></span></p>
-                <p><strong>名前:</strong> <span x-text="contact.name"></span></p>
-                <p><strong>性別:</strong> <span x-text="contact.gender"></span></p>
-                <p><strong>メール:</strong> <span x-text="contact.email"></span></p>
-                <p><strong>電話番号:</strong> <span x-text="contact.tel"></span></p>
-                <p><strong>住所:</strong> <span x-text="contact.address"></span></p>
-                <p><strong>建物名:</strong> <span x-text="contact.building"></span></p>
-                <p><strong>種類:</strong> <span x-text="contact.category"></span></p>
-                <p><strong>内容:</strong></p>
-                <div x-text="contact.detail"></div>
-            </div>
-            <form :action="contact.deleteUrl" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="button" @click="open=false" class="btn-cancel">キャンセル</button>
-                <button class="btn-delete">削除する</button>
-            </form>
-        </div>
-    </div>
-    {{-- ▼▼ 詳細モーダル ▼▼ --}}
-    <div x-show="openDetail" @click.self="openDetail=false" class="modal-overlay">
-        <div class="modal-box">
-            <button @click="openDetail=false" class="modal-close">×</button>
-            <h2 class="modal-title">お問い合わせ詳細</h2>
-
-            <div class="modal-info">
-                <p><strong>ID:</strong> <span x-text="contact.id"></span></p>
-                <p><strong>名前:</strong> <span x-text="contact.name"></span></p>
-                <p><strong>性別:</strong> <span x-text="contact.gender"></span></p>
-                <p><strong>メール:</strong> <span x-text="contact.email"></span></p>
-                <p><strong>電話番号:</strong> <span x-text="contact.tel"></span></p>
-                <p><strong>住所:</strong> <span x-text="contact.address"></span></p>
-                <p><strong>建物名:</strong> <span x-text="contact.building"></span></p>
-                <p><strong>種類:</strong> <span x-text="contact.category"></span></p>
-
-                <p><strong>内容:</strong></p>
-            <div x-text="contact.detail"></div>
-        </div>
-    </div>
-</div>
-{{-- ▲▲ 詳細モーダル ▲▲ --}}
-
+    
 </div>
 @endsection

@@ -11,7 +11,6 @@ class Category extends Model
 
     protected $fillable = ['content'];
 
-    // お問い合わせとのリレーション
     public function contacts()
     {
         return $this->hasMany(Contact::class);

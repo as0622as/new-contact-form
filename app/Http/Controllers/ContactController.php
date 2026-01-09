@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    // PG01 入力画面
     public function create(Request $request)
     {
         $categories = Category::all();
@@ -17,7 +16,7 @@ class ContactController extends Controller
         return view('contacts.create', compact('categories', 'inputs'));
     }
 
-    // PG02 確認画面
+
     public function confirm(StoreContactRequest $request)
     {
 
@@ -31,7 +30,6 @@ class ContactController extends Controller
         return view('contacts.confirm', compact('inputs'));
     }
 
-    // PG03 送信処理
     public function store(StoreContactRequest $request)
     {
         $inputs = $request->validated();
@@ -42,7 +40,6 @@ class ContactController extends Controller
         return redirect()->route('contacts.thanks');
     }
 
-    // PG04 管理画面一覧
     public function index()
     {
         $contacts = Contact::with('category')
@@ -52,7 +49,6 @@ class ContactController extends Controller
         return view('admin.contacts.index', compact('contacts','categories'));
     }
 
-    // PG05 検索
     public function search(Request $request)
     {
         $query = Contact::query()->with('category');
@@ -83,17 +79,10 @@ class ContactController extends Controller
         return view('admin.contacts.index', compact('contacts', 'categories'));
     }
 
-    // PG07 削除
     public function destroy($id)
     {
         Contact::findOrFail($id)->delete();
         return redirect('/admin');
-    }
-
-    // PG11 エクスポート（中身はあとでOK）
-    public function export()
-    {
-        // CSV出力など
     }
 
     public function thanks()

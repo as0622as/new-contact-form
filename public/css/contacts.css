@@ -1,6 +1,4 @@
-/* =========================
-   タイトル
-========================= */
+
 .page-title {
     text-align: center;
     margin: 25px 0 35px;
@@ -9,40 +7,31 @@
     color: rgba(99, 68, 54, 0.5);
 }
 
-/* =========================
-   フォーム全体
-========================= */
 .contact-form {
     max-width: 900px;
     margin: 0 auto;
 }
 
-/* ラベル ＋ 入力エリア 横並び */
 .form-group {
     display: flex;
     align-items: center;
     margin-bottom: 25px;
 }
 
-/* ラベル */
 .form-label {
     font-weight: bold;
-    width: 180px;   /* ← ラベル幅ここで調整 */
+    width: 180px;
 }
 
 .required {
     color: red;
 }
 
-/* 入力エリア共通 */
 .form-group > div {
     display: flex;
     align-items: center;
 }
 
-/* =========================
-   お名前
-========================= */
 .name-row {
     display: flex;
     gap: 20px;
@@ -53,25 +42,16 @@
     padding: 6px;
 }
 
-/* =========================
-   性別
-========================= */
 .gender-row {
     display: flex;
     gap: 20px;
 }
 
-/* =========================
-   メール
-========================= */
 .email-input {
     width: 300px;
     padding: 6px;
 }
 
-/* =========================
-   電話
-========================= */
 .tel-row {
     display: flex;
     align-items: center;
@@ -84,9 +64,6 @@
     text-align: center;
 }
 
-/* =========================
-   住所
-========================= */
 .address-input {
     width: 400px;
     padding: 6px;
@@ -97,34 +74,22 @@
     padding: 6px;
 }
 
-/* =========================
-   種類
-========================= */
 .type-select {
     width: 220px;
     padding: 6px;
 }
 
-/* =========================
-   内容
-========================= */
 .content-row textarea {
     width: 420px;
     height: 130px;
     padding: 8px;
 }
 
-/* =========================
-   エラー
-========================= */
 .error-message {
     color: red;
     margin-bottom: 25px;
 }
 
-/* =========================
-   ボタン
-========================= */
 .btn {
     display: block;
     margin: 40px auto 0;

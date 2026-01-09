@@ -109,7 +109,7 @@
     {{-- 建物名 --}}
     <div class="form-group">
         <label class="form-label">
-            建物名 <span class="required">※</span>
+            建物名
         </label>
 
         <div class="building-row">

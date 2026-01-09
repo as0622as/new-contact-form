@@ -22,7 +22,6 @@ class Contact extends Model
     'content',
 ];
 
-    // カテゴリとのリレーション
     public function category()
     {
         return $this->belongsTo(Category::class);
