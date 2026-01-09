@@ -1,0 +1,58 @@
+/* ヘッダー */
+.header {
+    width: 100%;
+    background: white;
+    color: rgba(99, 68, 54, 0.9);
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 中身を左右に並べる */
+.header-inner {
+    display: flex;
+    flex-direction: row; /* 横並び */
+    justify-content: space-between; /* 左右に広げる */
+    align-items: center;
+    gap: 20px;
+}
+
+/* 左のタイトル */
+.site-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* 右側ボタン */
+.header-nav {
+    margin-left: auto; /* 右端に寄せる */
+}
+h2.page-title {
+    margin: 40px 0 20px !important; 
+    text-align: center;
+    font-size: 28px;
+    color: #4d322a;
+}
+/* ボタン共通デザイン */
+.nav-btn {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #634436;
+    color: #fff;
+    border: 1px solid #634436;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-btn:hover {
+    background: #4d322a;
+    color: #fff;
+}
+
+/* main */
+.main {
+    max-width: 1000px;
+    margin: 10px auto 30px; /* ヘッダー分の余白を上に追加 */
+    padding: 0 20px;
+}

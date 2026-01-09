@@ -1,0 +1,130 @@
+/* login.css */
+
+/* ページ全体を画面いっぱいにしてフォームを中央寄せ */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 10vh;
+    padding-top: 10px; /* ヘッダー分の余白 */
+    box-sizing: border-box;
+}
+
+/* ヘッダー固定 */
+/*header.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 1000;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header .site-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+header .header-nav a,
+header .header-nav button {
+    margin-left: 10px;
+    padding: 6px 12px;
+    background-color: #634436;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+header .header-nav a:hover,
+header .header-nav button:hover {
+    background-color: #4d322a;
+}*/
+
+/* ログインフォーム */
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.login-form .form-group {
+    margin-bottom: 15px;
+    width: 300px;
+}
+
+.login-form .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login-form .form-input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.btn-submit {
+    width: 300px;
+    padding: 10px;
+    background-color: #634436;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #4d322a;
+}
+
+.login-register-link {
+    margin-top: 15px;
+}
+
+.login-register-link a {
+    color: #634436;
+    text-decoration: none;
+}
+
+.login-register-link a:hover {
+    text-decoration: underline;
+}
+
+/* エラーメッセージ */
+.error-message {
+    width: 300px;
+    background-color: #ffdddd;
+    border: 1px solid #ff5c5c;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    color: #a80000;
+}

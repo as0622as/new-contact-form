@@ -1,0 +1,224 @@
+/* ============================
+    基本レイアウト
+============================ */
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f8f8;
+    padding: 20px;
+}
+
+/* タイトル */
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* ============================
+    検索フォーム
+============================ */
+form.mb-4 {
+    margin-bottom: 20px;
+}
+
+form.mb-4 input[type="text"],
+form.mb-4 select,
+form.mb-4 input[type="date"] {
+    padding: 6px 8px;
+}
+
+form.mb-4 button {
+    padding: 6px 12px;
+}
+.search-input {
+    width: 280px;
+}
+
+/* ============================
+    テーブル
+============================ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+table th {
+    background: #eee;
+    font-weight: bold;
+}
+
+table th,
+table td {
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+/* ============================
+    ボタン
+============================ */
+button {
+    background: rgba(99, 68, 54, 0.8);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.btn-reset {
+    background: rgba(212, 200, 161, 0.8);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgba(99, 68, 54, 1);
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* ============================
+    🔥 ページネーション 完全制御
+============================ */
+
+/* Laravel pagination wrapper */
+.pagination-links {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.page-item {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #999;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #333;
+    background: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* hover */
+.pagination-links a:hover {
+    background: #f2f2f2 !important;
+}
+
+/* SVG（矢印） */
+.pagination-links svg {
+    width: 18px;
+    height: 18px;
+}
+
+.page-item.active {
+    background:rgba(99, 68, 54, 1);
+    color: #fff;
+    border-color:rgba(99, 68, 54, 1);
+    cursor: default;
+}
+/* ==========================
+   モーダル
+=========================== */
+
+/* 黒い背景 */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* モーダル本体 */
+.modal-box {
+    background: white;
+    width: 420px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* タイトル */
+.modal-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* 情報枠 */
+.modal-info {
+    margin: 10px 0;
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+/* ボタン */
+.btn-cancel {
+    padding: 6px 10px;
+    margin-right: 8px;
+    background: #aaa;
+    color: white;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background: #888;
+}
+
+.btn-delete {
+    background: #c00;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background: #900;
+}
+.modal-detail {
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 6px;
+    white-space: pre-wrap;
+}
+.modal-box {
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+}
+
+.modal-close:hover {
+    color: #000;
+}
+
