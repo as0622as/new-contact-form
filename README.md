@@ -23,7 +23,7 @@
  docker compose exec app php artisan migrate
 
 6. ブラウザでアクセス
- http://localhost:8000
+ http://localhost:8001
 
 ##　構成
     Laravel: バックエンド
