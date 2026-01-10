@@ -32,12 +32,12 @@
         <div class="name-row">
             <div class="name-item">
                 <input type="text" name="last_name" class="name-input"
-                       placeholder="山田" value="{{ old('last_name', $inputs['last_name'] ?? '') }}">
+                    placeholder="山田" value="{{ old('last_name', $inputs['last_name'] ?? '') }}">
             </div>
 
             <div class="name-item">
                 <input type="text" name="first_name" class="name-input"
-                       placeholder="太郎" value="{{ old('first_name', $inputs['first_name'] ?? '') }}">
+                    placeholder="太郎" value="{{ old('first_name', $inputs['first_name'] ?? '') }}">
             </div>
         </div>
     </div>
@@ -67,10 +67,10 @@
 
         <div class="email-row">
             <input type="email"
-                   name="email"
-                   class="email-input"
-                   placeholder="test@example.com"
-                   value="{{ old('email', $inputs['email'] ?? '') }}">
+                    name="email"
+                    class="email-input"
+                    placeholder="test@example.com"
+                    value="{{ old('email', $inputs['email'] ?? '') }}">
         </div>
     </div>
 
@@ -99,10 +99,10 @@
 
         <div class="address-row">
             <input type="text"
-                   name="address"
-                   class="address-input"
-                   placeholder="東京都渋谷区千駄ヶ谷1-2-3"
-                   value="{{ old('address', $inputs['address'] ?? '') }}">
+                    name="address"
+                    class="address-input"
+                    placeholder="東京都渋谷区千駄ヶ谷1-2-3"
+                    value="{{ old('address', $inputs['address'] ?? '') }}">
         </div>
     </div>
 
@@ -114,10 +114,10 @@
 
         <div class="building-row">
             <input type="text"
-                   name="building"
-                   class="building-input"
-                   placeholder="千駄ヶ谷マンション"
-                   value="{{ old('building', $inputs['building'] ?? '') }}">
+                    name="building"
+                    class="building-input"
+                    placeholder="千駄ヶ谷マンション"
+                    value="{{ old('building', $inputs['building'] ?? '') }}">
         </div>
     </div>
 

@@ -15,9 +15,6 @@ Route::prefix('admin')
     ->middleware('auth')
     ->group(function () {
 
-        Route::get('/dashboard', [AdminController::class, 'index'])
-            ->name('dashboard');
-
         Route::get('/', [AdminContactController::class, 'index'])->name('contacts.index');
         Route::delete('delete/{contact}', [AdminContactController::class, 'destroy'])->name('contacts.destroy');
         Route::get('search', [AdminContactController::class, 'search'])->name('contacts.search');
